@@ -21,16 +21,26 @@ ap.add_argument("-c", "--confidence", type=float, default=0.5,
 	help="minimum probability to filter weak detections")
 args = vars(ap.parse_args())
 
+args = {}
+print(args)
+
+args["dataset"] = 'dataset'
+args["embeddings"] = ''
+args["detector"] = 'models\\face-detection'
+args["embedding_model"] = 'models\\embedding-model'
+args["confidence"] = 1
+
 # load our serialized face detector from disk
 print("[INFO] loading face detector...")
-protoPath = os.path.sep.join([args["detector"], "deploy.prototxt"])
-modelPath = os.path.sep.join([args["detector"],
+
+protoPath = os.path.sep.join([os.getcwd(), args["detector"], "deploy.prototxt"])
+modelPath = os.path.sep.join([os.getcwd(), args["detector"],
 	"res10_300x300_ssd_iter_140000.caffemodel"])
 detector = cv2.dnn.readNetFromCaffe(protoPath, modelPath)
- 
+
 # load our serialized face embedding model from disk
 print("[INFO] loading face recognizer...")
-embedderPath = os.path.sep.join([args["embedding_model"],
+embedderPath = os.path.sep.join([os.getcwd(),args["embedding_model"],
 	"openface_nn4.small2.v1.t7"])
 embedder = cv2.dnn.readNetFromTorch(embedderPath)
 
