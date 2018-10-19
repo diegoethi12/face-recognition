@@ -21,13 +21,13 @@ ap.add_argument("-c", "--confidence", type=float, default=0.5,
 	help="minimum probability to filter weak detections")
 args = vars(ap.parse_args())
 
-args = {}
-args["dataset"] = 'dataset'
-args["embeddings"] = 'embeddings'
-args["detector"] = 'models\\face-detection'
-args["embedding_model"] = 'models\\embedding-model'
-args["confidence"] = 0.5
-print(args)
+#args = {}
+#args["dataset"] = 'dataset'
+#args["embeddings"] = 'embeddings'
+#args["detector"] = 'models\\face-detection'
+#args["embedding_model"] = 'models\\embedding-model'
+#args["confidence"] = 0.5
+#print(args)
 
 # load our serialized face detector from disk
 print("[INFO] loading face detector...")
